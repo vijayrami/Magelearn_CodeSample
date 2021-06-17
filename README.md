@@ -1,6 +1,8 @@
 # Magelearn_CodeSample
 Display selection form of customers/products in the ui_component of admin grid and display custom PHTML file on front end with the use of Knockout JS.
 
+Also display admin grid on front end.
+
 ## Referances:
 [ChrisMallory_CodeSample](https://github.com/christophermallory/ChrisMallory_CodeSample)
 
