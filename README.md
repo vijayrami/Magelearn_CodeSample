@@ -20,6 +20,8 @@ Also display admin grid on front end.
 
 [![My-Grid-List.png](https://i.postimg.cc/qq1FmP58/My-Grid-List.png)](https://postimg.cc/GTszt5r2)
 
+[![Edit-Codesample-5-Codesamples-Magento-Admin.png](https://i.postimg.cc/PqNFxVNx/Edit-Codesample-5-Codesamples-Magento-Admin.png)](https://postimg.cc/yJ4TpPm4)
+
 ## Referances:
 [ChrisMallory_CodeSample](https://github.com/christophermallory/ChrisMallory_CodeSample)
 
