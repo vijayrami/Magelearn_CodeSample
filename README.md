@@ -15,6 +15,8 @@ Also display admin grid on front end.
 - Frontend UiComponent grid
 - Knockout-based frontend template
 - Custom module styles (.less file) integration
+- Product selection options in ui_component edit form.
+- Display admin grid on front end.
 
 ## Referances:
 [ChrisMallory_CodeSample](https://github.com/christophermallory/ChrisMallory_CodeSample)
