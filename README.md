@@ -13,7 +13,7 @@ Also display admin grid on front end.
 - Installation scripts to create a table and insert sample data
 - Un-installation scripts to properly uninstall this extension
 - Frontend UiComponent grid
-- Knockout-based frontend template
+- Knockout-based frontend template (ko.observable and ko.computed)
 - Custom module styles (.less file) integration
 - Product selection options in ui_component edit form.
 - Display admin grid on front end.
