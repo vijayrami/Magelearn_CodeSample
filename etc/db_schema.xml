@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="magelearn_codesample" resource="default" engine="innodb" comment="Magelearn Codesample Table">
+		<column xsi:type="smallint" name="entity_id" padding="6" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="entity_id"/>
+		</constraint>
+		<column name="product_ids" nullable="true" xsi:type="text" comment="Product ids" />
+		<column name="additional_text" nullable="true" xsi:type="text" comment="Additional Text" />
+		<index referenceId="MAGELEARN_CUSTOMFORM_PRODUCT_IDS" indexType="fulltext">
+	        <column name="product_ids"/>
+	    </index>
+	    <index referenceId="MAGELEARN_CUSTOMFORM_ADDITIONAL_TEXT" indexType="fulltext">
+	        <column name="additional_text"/>
+	    </index>
+	</table>
+</schema>

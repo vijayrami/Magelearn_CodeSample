@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="context" xsi:type="configurableObject">
+        <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\Context</argument>
+        <argument name="namespace" xsi:type="string">magelearn_codesample_product_list_custom</argument>
+    </argument>
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">magelearn_codesample_product_list_custom.magelearn_codesample_product_list_custom_data_source</item>
+            <item name="deps" xsi:type="string">magelearn_codesample_product_list_custom.magelearn_codesample_product_list_custom_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">products_columns</item>
+    </argument>
+    <dataSource name="magelearn_codesample_product_list_custom_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magelearn\CodeSample\Ui\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">magelearn_codesample_product_list_custom_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="codesample/index/index"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <filters name="listing_filters">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="columnsProvider" xsi:type="string">magelearn_codesample_product_list_custom.magelearn_codesample_product_list_custom.products_columns</item>
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">magelearn_codesample_product_list_custom.magelearn_codesample_product_list_custom.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current.filters</item>
+                </item>
+                <item name="childDefaults" xsi:type="array">
+                    <item name="provider" xsi:type="string">magelearn_codesample_product_list_custom.magelearn_codesample_product_list_custom.listing_top.listing_filters</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="visible" xsi:type="string">magelearn_codesample_product_list_custom.magelearn_codesample_product_list_custom.products_columns.${ $.index }:visible</item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+    </filters>
+    <columns name="products_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="entity_id" sortOrder="60">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="product_ids" sortOrder="70">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Product ids</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="additional_text" sortOrder="80">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Additional text</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+    </columns>
+    <paging name="listing_paging">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">magelearn_codesample_product_list_custom.magelearn_codesample_product_list_custom.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current.paging</item>
+                </item>
+                <item name="selectProvider" xsi:type="string">magelearn_codesample_product_list_custom.magelearn_codesample_product_list_custom.products_columns.ids</item>
+            </item>
+        </argument>
+    </paging>
+</listing>

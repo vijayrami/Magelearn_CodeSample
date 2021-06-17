@@ -1,0 +1,91 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">magelearn_codesample_codesample_form.codesample_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button name="back" class="Magelearn\CodeSample\Block\Adminhtml\Codesample\Edit\BackButton"/>
+			<button name="delete" class="Magelearn\CodeSample\Block\Adminhtml\Codesample\Edit\DeleteButton"/>
+			<button name="save" class="Magelearn\CodeSample\Block\Adminhtml\Codesample\Edit\SaveButton"/>
+			<button name="save_and_continue" class="Magelearn\CodeSample\Block\Adminhtml\Codesample\Edit\SaveAndContinueButton"/>
+		</buttons>
+		<namespace>magelearn_codesample_codesample_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>magelearn_codesample_codesample_form.codesample_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="codesample_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider name="codesample_form_data_source" class="Magelearn\CodeSample\Model\Codesample\DataProvider">
+			<settings>
+				<requestFieldName>entity_id</requestFieldName>
+				<primaryFieldName>entity_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+		<field name="product_sku" component="Magento_Catalog/js/components/new-category" formElement="select" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filterOptions" xsi:type="boolean">true</item><!--to add filter in select-ui-->
+		            <item name="multiple" xsi:type="boolean">true</item><!--select multiple or not-->
+		            <item name="showCheckbox" xsi:type="boolean">true</item>
+		            <!-- checkbox will not display if multiple == false -->
+		            <item name="disableLabel" xsi:type="boolean">true</item>
+            		<item name="levelsVisibility" xsi:type="number">1</item>
+				</item>
+			</argument>
+			<settings>
+				<required>true</required>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+				<elementTmpl>ui/grid/filters/elements/ui-select</elementTmpl>
+				<label translate="true">Categories</label>
+				<dataScope>data.parent</dataScope>
+				<componentType>field</componentType>
+		        <listens>
+		            <link name="${ $.namespace }.${ $.namespace }:responseData">setParsed</link>
+		        </listens>
+			</settings>
+			<formElements>
+		        <select>
+		            <settings>
+		                <options class="Magento\Catalog\Ui\Component\Product\Form\Categories\Options"/>
+		            </settings>
+		        </select>
+		    </formElements>
+		</field>
+		<field name="additional_text" formElement="textarea" sortOrder="30">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Codesample</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Additional text</label>
+				<dataScope>additional_text</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">false</rule>
+				</validation>
+			</settings>
+		</field>
+	</fieldset>
+</form>

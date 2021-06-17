@@ -1,0 +1,29 @@
+<div class="notice">
+    <p data-bind="text: notice"></p>
+</div>
+<h3>Table</h3>
+<table class="data table text-table" id="codesample-data-table">
+	<caption class="table-caption">Codesample Test Data</caption>
+    <thead>
+    <tr>
+        <th scope="col" class="col entity_id">Entity ID</th>
+        <th scope="col" class="col product_ids">Product ids</th>
+        <th scope="col" class="col button">Button</th>
+    </tr>
+    </thead>
+    <tbody data-bind="foreach: items">
+    <tr data-bind="click: $parent.getAdditionalText">
+        <td data-th="Entity ID" class="col entity_id" data-bind="text: entity_id"></td>
+        <td data-th="Product Ids" class="col product_sku" data-bind="text: product_ids"></td>
+        <td data-th="Additional Text" class="col additional-text"><button data-bind="click: $parent.getAdditionalText">View Additional Text</button></td>
+    </tr>
+    </tbody>
+</table>
+<h3>Unordered List</h3>
+<ul data-bind="foreach: items">
+    <li class="unordered-text" data-bind="text: product_ids, click: $parent.getAdditionalText"></li>
+</ul>
+<h3>Paragraph</h3>
+<div class="additional-text">
+    <p data-bind="text: additionalText, style: {color: randomColour}"></p>
+</div>

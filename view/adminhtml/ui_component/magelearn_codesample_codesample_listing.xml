@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">magelearn_codesample_codesample_listing.magelearn_codesample_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>magelearn_codesample_columns</spinner>
+		<deps>
+			<dep>magelearn_codesample_codesample_listing.magelearn_codesample_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new Codesample</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource name="magelearn_codesample_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">entity_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Magelearn_CodeSample::Codesample</aclResource>
+		<dataProvider name="magelearn_codesample_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>entity_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">magelearn_codesample_codesample_listing.magelearn_codesample_codesample_listing.magelearn_codesample_columns.ids</item>
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="magelearn_codesample/Codesample/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="name" xsi:type="string" translate="true">Delete items</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>           
+            <action name="edit">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">edit</item>
+                        <item name="label" xsi:type="string" translate="true">Edit</item>
+                        <item name="callback" xsi:type="array">
+                            <item name="provider" xsi:type="string">magelearn_codesample_codesample_listing.magelearn_codesample_codesample_listing.magelearn_codesample_columns_editor</item>
+                            <item name="target" xsi:type="string">editSelected</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+		<filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="provider" xsi:type="string">magelearn_codesample_codesample_listing.magelearn_codesample_listing_data_source</item>
+                    <item name="chipsProvider" xsi:type="string">magelearn_codesample_codesample_listing.magelearn_codesample_codesample_listing.listing_top.listing_filters_chips</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">magelearn_codesample_codesample_listing.magelearn_codesample_codesample_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.search</item>
+                    </item>
+                </item>
+            </argument>
+        </filterSearch>
+	</listingToolbar>
+	<columns name="magelearn_codesample_columns">
+		<settings>
+			<editorConfig>
+				<param name="selectProvider" xsi:type="string">magelearn_codesample_codesample_listing.magelearn_codesample_codesample_listing.magelearn_codesample_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">entity_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="magelearn_codesample/Codesample/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">magelearn_codesample_codesample_listing.magelearn_codesample_codesample_listing.magelearn_codesample_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids" sortOrder="50">
+			<settings>
+				<indexField>entity_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="entity_id" sortOrder="60">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="product_ids" sortOrder="70">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Product ids</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="additional_text" sortOrder="80">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Additional text</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">false</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<actionsColumn name="actions" class="Magelearn\CodeSample\Ui\Component\Listing\Column\CodesampleActions" sortOrder="90">
+			<settings>
+				<indexField>entity_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>107</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

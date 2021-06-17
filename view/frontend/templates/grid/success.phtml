@@ -1,0 +1,33 @@
+/** here you can get block class object by "$this" or "$block"  **/
+/** here i'll use "$block" for get block object **/
+<?php  $_gridrecords = $block->getCollection(); // get collection which we set in block class
+?>
+<?php if ($_gridrecords && count($_gridrecords)): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?php echo __('Grid Record') ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col id"><?php echo __('ID #') ?></th>
+                    <th scope="col" class="col title"><?php echo __('Product Ids') ?></th>
+                    <th scope="col" class="col date"><?php echo __('Additional Text') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php  // read collection as magento1.x and display in list 
+                       foreach ($_gridrecords as $_gridrecord): ?>
+                    <tr>
+                        <td class="col id"><?php echo $_gridrecord->getEntityId() ?></td>
+                        <td class="col shipping"><?php echo $_gridrecord->getProductIds() ?></td>
+                        <td class="col date"><?php echo $_gridrecord->getAdditionalText() ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); // for display pager block which we create in block file.   ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('grid records not available.'); ?></span></div>
+<?php endif ?>

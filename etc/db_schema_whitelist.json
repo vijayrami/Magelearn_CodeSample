@@ -1,0 +1,16 @@
+{
+    "magelearn_codesample": {
+        "column": {
+            "entity_id": true,
+            "product_ids": true,
+            "additional_text": true
+        },
+        "index": {
+            "MAGELEARN_CODESAMPLE_PRODUCT_IDS": true,
+            "MAGELEARN_CODESAMPLE_ADDITIONAL_TEXT": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

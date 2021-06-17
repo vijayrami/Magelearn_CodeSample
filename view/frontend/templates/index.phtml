@@ -1,0 +1,22 @@
+<?php $jsonProductData = $block->getProductCollectionJsonData(); ?>
+<?php $notice = $block->getNotice() ?>
+<div id="knockout-template" data-bind="scope:'challenge'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+       {
+           "#knockout-template": {
+               "Magento_Ui/js/core/app": {
+                   "components": {
+                       "challenge": {
+                            "component": "Magelearn_CodeSample/js/view/data",
+                            "items": <?php echo $jsonProductData ?>,
+                            "notice": <?php echo $notice ?>
+                        }
+                   }
+               }
+           }
+       }
+   </script>
+
+   
+</div>

@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Magelearn::top_level" title="Magelearn" module="Magelearn_CodeSample" sortOrder="9999" resource="Magento_Backend::content"/>
+		<add id="Magelearn_CodeSample::magelearn_codesample_managecode" title="Manage Codesample" module="Magelearn_CodeSample" sortOrder="9999" resource="Magento_Backend::content" parent="Magelearn::top_level" action="magelearn_codesample/codesample/index"/>
+	</menu>
+</config>
