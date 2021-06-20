@@ -60,18 +60,15 @@
 				<label translate="true">ID</label>
 			</settings>
 		</column>
-		<column name="product_ids" sortOrder="70">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Product ids</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+		<column name="product_ids" class="Magelearn\CodeSample\Ui\Component\Listing\Column\ProductSku" sortOrder="70">
+                <settings>
+	                <label translate="true">Product skus</label>
+	                <dataType>text</dataType>
+	                <filter>text</filter>
+	                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+	                <sortable>false</sortable>
+	            </settings>
+        </column>
 		<column name="additional_text" sortOrder="80">
 			<settings>
 				<filter>text</filter>
