@@ -9,7 +9,7 @@
             <thead>
                 <tr>
                     <th scope="col" class="col id"><?php echo __('ID #') ?></th>
-                    <th scope="col" class="col title"><?php echo __('Product Ids') ?></th>
+                    <th scope="col" class="col title"><?php echo __('Product SKU') ?></th>
                     <th scope="col" class="col date"><?php echo __('Additional Text') ?></th>
                 </tr>
             </thead>
@@ -18,7 +18,12 @@
                        foreach ($_gridrecords as $_gridrecord): ?>
                     <tr>
                         <td class="col id"><?php echo $_gridrecord->getEntityId() ?></td>
-                        <td class="col shipping"><?php echo $_gridrecord->getProductIds() ?></td>
+                        <td class="col shipping">
+                        	<?php if(isset($_gridrecord->getProductIds()) && !empty($_gridrecord->getProductIds())) {
+                        		echo $block->getProductSkus($_gridrecord->getProductIds());
+                        	}
+                        	?>
+                        </td>
                         <td class="col date"><?php echo $_gridrecord->getAdditionalText() ?></td>
                     </tr>
                 <?php endforeach; ?>
