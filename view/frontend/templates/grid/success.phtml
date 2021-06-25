@@ -18,7 +18,12 @@
                        foreach ($_gridrecords as $_gridrecord): ?>
                     <tr>
                         <td class="col id"><?php echo $_gridrecord->getEntityId() ?></td>
-                        <td class="col shipping"><?php echo $block->getProductSkus($_gridrecord->getProductIds()) ?></td>
+                        <td class="col shipping">
+                        	<?php if(null !== $_gridrecord->getProductIds() && $_gridrecord->getProductIds() !== '') {
+                        		echo $block->getProductSkus($_gridrecord->getProductIds());
+                        	}
+                        	?>
+                        </td>
                         <td class="col date"><?php echo $_gridrecord->getAdditionalText() ?></td>
                     </tr>
                 <?php endforeach; ?>
