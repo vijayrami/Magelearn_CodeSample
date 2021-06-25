@@ -41,7 +41,7 @@ class ProductSku extends \Magento\Ui\Component\Listing\Columns\Column
     {
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
-                if (isset($item['product_ids'])) {
+                if (isset($item['product_ids']) && $item['product_ids'] != '') {
                 	$product_ids = $product_sku = [];
                     $product_ids = explode(",", $item['product_ids']);
 					foreach ($product_ids as $product_id) {

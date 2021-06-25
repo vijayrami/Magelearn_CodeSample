@@ -48,7 +48,7 @@ class Grid extends \Magento\Framework\View\Element\Template
 	
 	public function getProductSkus($productids)
     {
-    	$product_sku = [];
+    	$product_ids = $product_sku = [];
     	$product_ids = explode(",", $productids);
 		
 		foreach ($product_ids as $product_id) {
