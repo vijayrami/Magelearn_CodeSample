@@ -56,7 +56,7 @@ class Options implements OptionSourceInterface
         if ($this->productsArray === null) {
             $productCollection = $this->productCollectionFactory->create();
 			$productCollection->addAttributeToSelect('*');
-			//$productCollection->setPageSize(10);
+			$productCollection->setPageSize(10);
 			/* setPageSize if you are facing problem when loading admin grid page */
 
             foreach($productCollection as $product) {

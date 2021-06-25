@@ -105,11 +105,11 @@ class Index extends Template
     public function getProductCollectionJsonData()
     {
         $_productCollection = $this->_getCollection();
+		
         $i = 0;
         $productDataArray = array();
         foreach ($_productCollection as $product) {
-        	$product_skus = '';
-        	if(isset($product['product_ids']) && $product['product_ids'] != '') {
+        	if(isset($product['product_ids'])) {
         		$product_ids = $product_sku = [];
         		$product_ids = explode(",", $product['product_ids']);
 				
@@ -126,7 +126,6 @@ class Index extends Template
             );
             $i++;
         }
-		
         return $this->_serializer->serialize($productDataArray);
     }
 }
